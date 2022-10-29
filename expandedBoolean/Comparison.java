@@ -2,17 +2,13 @@ package expandedBoolean;
 
 public class Comparison extends TruthLevelTier {
 	
-	public boolean singleComparison(Gact obj, Reference point)
+	public boolean singleComparison(Gact obj, Reference point) throws InvalidPointException
 	{
 		
 		TruthLevels level = obj.level(point);
 		
-		if(level == TruthLevels.FALSE || level == TruthLevels.AFALSE) return false;
-		else if(level == TruthLevels.NEUTRAL) 
-		{
-			if(obj.getterNeutralize() == true) return true;
-			else return false;
-		}
+		if(level == TruthLevels.FALSE || level == TruthLevels.AFALSE || level == TruthLevels.NEUF) return false; 
+		else if(level == TruthLevels.TIRESIAS) return obj.getterTiresiasBehaviour(point); 
 		else return true;
 		
 	}
